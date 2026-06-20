@@ -1,11 +1,11 @@
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer(
-    "BAAI/bge-small-en-v1.5"
+    "all-MiniLM-L6-v2"
 )
-vector = model.encode(chunk_text)   
-{
- "chunk_id":1,
- "text":"...",
- "embedding":[...]
-}
+
+def create_embeddings(chunks):
+
+    embeddings = model.encode(chunks)
+
+    return embeddings
