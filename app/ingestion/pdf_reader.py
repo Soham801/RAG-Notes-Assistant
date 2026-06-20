@@ -1,8 +1,12 @@
+from pathlib import Path
 from pypdf import PdfReader
+
 
 def extract_text(pdf_path):
 
     reader = PdfReader(pdf_path)
+
+    filename = Path(pdf_path).name
 
     pages = []
 
@@ -13,6 +17,7 @@ def extract_text(pdf_path):
         if text:
 
             pages.append({
+                "file": filename,
                 "page": i + 1,
                 "text": text
             })

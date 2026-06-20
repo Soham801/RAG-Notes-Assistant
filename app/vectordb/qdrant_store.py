@@ -2,5 +2,6 @@ from qdrant_client import QdrantClient
 
 client = QdrantClient(
     host="localhost",
-    port=6333
+    port=6333,
+    timeout=120
 )

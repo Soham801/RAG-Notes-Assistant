@@ -1,16 +1,35 @@
+import os
+
 from app.ingestion.pdf_reader import extract_text
 from app.ingestion.chunker import chunk_text
 from app.ingestion.embedder import create_embeddings
 
 from app.vectordb.store_vectors import store_chunks
 
-pdf_text = extract_text("app/pdfs/Attention-is-all-you-need.pdf")
+pdf_folder = "app/pdfs"
 
-chunks = chunk_text(pdf_text)
+for file in os.listdir(pdf_folder):
 
-embeddings = create_embeddings(chunks)
+    if file.endswith(".pdf"):
 
-store_chunks(
-    chunks,
-    embeddings
-)
+        path = os.path.join(
+            pdf_folder,
+            file
+        )
+
+        pages = extract_text(path)
+
+        chunks = chunk_text(pages)
+
+        embeddings = create_embeddings(chunks)
+
+        store_chunks(
+            chunks,
+            embeddings
+        )
+
+        print(
+            f"{file} processed."
+        )
+print(file)
+print(len(chunks))

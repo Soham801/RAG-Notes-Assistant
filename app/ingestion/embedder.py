@@ -4,8 +4,15 @@ model = SentenceTransformer(
     "all-MiniLM-L6-v2"
 )
 
+
 def create_embeddings(chunks):
 
-    embeddings = model.encode(chunks)
+    texts = []
 
-    return embeddings
+    for chunk in chunks:
+
+        texts.append(
+            chunk["text"]
+        )
+
+    return model.encode(texts)
