@@ -8,3 +8,14 @@ wheels/
 
 # Virtual environments
 .venv
+# VS Code settings
+.vscode/
+
+# Qdrant data (if any)
+qdrant_storage/
+
+# OS files
+.DS_Store
+# Environment variables
+.env
+app/.env
